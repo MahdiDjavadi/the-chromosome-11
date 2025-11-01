@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4 # گام ۱: دریافت کد از مخزن
 
       - name: 2. Print a greeting message
-        run: echo "Hello from the Pipeline!" # گام ۲: چاپ پیام
+        run: echo "Hello World!" # گام ۲: چاپ پیام
 
       - name: 3. List files for verification
         run: ls -la # گام ۳: نمایش فایل‌ها در محیط اجرا
