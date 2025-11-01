@@ -2,7 +2,7 @@ name: 1. Simple Hello World Pipeline
 
 on:
   push:
-    branches: [ main ] # راه‌انداز: اجرا با هر push به شاخه اصلی
+    branches: [ main ] # اجرا با هر بار پوش به شاخه اصلی
 
 jobs:
   say_hello_job:
