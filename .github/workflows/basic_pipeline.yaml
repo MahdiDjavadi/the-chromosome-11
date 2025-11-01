@@ -1,32 +1,18 @@
-name: 3. Python CI/CD Pipeline
+name: 1. Simple Push Pipeline
 
 on:
   push:
-    branches: [ develop ] # فقط روی شاخه develop
+    branches: [ main ]
 
 jobs:
-  ci_cd:
+  say_hello_job:
     runs-on: ubuntu-latest
     steps:
-      - name: 1. Checkout Code
-        uses: actions/checkout@v4
+      - name: 1. Checkout repository code
+        uses: actions/checkout@v4 # دریافت کد
 
-      - name: 2. Setup Python 3.11 Environment
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-          
-      - name: 3. Install Required Dependencies (CI)
-        run: |
-          python -m pip install --upgrade pip
-          pip install flake8 pytest # ابزارهای رایج CI
+      - name: 2. Print a greeting message
+        run: echo "Hello from the Simple Automation Pipeline!"
 
-      - name: 4. Run Linter / Static Code Check
-        run: |
-          # این فرض می‌کند که شما فایل های پایتون دارید
-          echo "Running code quality check..."
-          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-
-      - name: 5. Deployment Simulation (CD)
-        # این گام پس از موفقیت گام‌های قبلی اجرا می شود
-        run: echo "Deployment to Staging Environment Complete!"
+      - name: 3. List files for verification
+        run: ls -la # تایید محتوای پوشه
