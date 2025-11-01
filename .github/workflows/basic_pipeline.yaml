@@ -1,18 +1,20 @@
-name: 1. Simple Push Pipeline
+name: Horray
 
 on:
-  push:
-    branches: [ main ]
+  workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
-  say_hello_job:
+  first_mahdi_code_ever:
     runs-on: ubuntu-latest
+    env: # Define environment variables
+      Sample_env_var : "Mahdi"
+      Flag_var : 'true'
+
     steps:
-      - name: 1. Checkout repository code
-        uses: actions/checkout@v4 # دریافت کد
+      - name: 1- Checkout Variable
+        if: env.Flag_var == 'true'
+        run: echo "Sample_env_var is ${{ env.Sample_env_var }}"
 
-      - name: 2. Print a greeting message
-        run: echo "Hello from the Simple Automation Pipeline!"
-
-      - name: 3. List files for verification
-        run: ls -la # تایید محتوای پوشه
+      - name: 2- If Condition Not Met
+        if: env.Flag_var != 'true'
+        run: echo "Condition not met. because of flag_var value is not ${{ env.Flag_var }} and Were False"
